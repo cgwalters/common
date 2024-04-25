@@ -145,4 +145,8 @@ func TestNormalizeTaggedDigestedString(t *testing.T) {
 			assert.Equal(t, res, named.String(), "%v", test)
 		}
 	}
+
+	// Test that we include error context
+	_, _, err := normalizeTaggedDigestedString("/dev:/dev")
+	assert.ErrorContains(t, err, "/dev:/dev")
 }
